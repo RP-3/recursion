@@ -2,13 +2,17 @@
 describe("stringifyJSON", function(){
   it("should match the result of calling JSON.stringify", function(){
 
-    arrayWithValidElements.forEach(function(obj){
+//Suspected error in line 6. I've replaced it with line 7. 
+//  arrayWithValidElements.forEach(function(obj){
+    stringifiableValues.forEach(function(obj){
       var result = stringifyJSON(obj);
       var expected = JSON.stringify(obj);
       expect(result).toEqual(expected);
     });
 
-    objectWithInvalidAttributes.forEach(function(obj){
+//  Similar suspected error. 
+//  objectWithInvalidAttributes.forEach(function(obj){
+    nonStringifiableValues.forEach(function(obj){
       var result = stringifyJSON(obj);
       var expected = JSON.stringify(obj);
       expect(result).toEqual(expected);
