@@ -40,7 +40,11 @@ var stringifyJSON = function (objIn, stringOut) {
 if (Object.prototype.toString.call(objIn) === '[object Object]'){
   if (!stringOut){var stringOut = [];}
   for (key in objIn){
-  	stringOut.push('"'+key+'"' + ":" + stringify(objIn[key]) );
+  	switch (typeof objIn[key]){
+  		case 'function': console.log("skipped " + objIn[key]); continue; //skip functions
+  		case 'undefined': console.log("skipped " + objIn[key]); continue; //skip undefined's
+  		default: stringOut.push('"'+key+'"' + ":" + stringify(objIn[key]) );
+  	} 	
   }
   return "{" + stringOut.toString() + "}";	
 }
