@@ -43,7 +43,7 @@ if (Object.prototype.toString.call(objIn) === '[object Object]'){
   	switch (typeof objIn[key]){
   		case 'function': console.log("skipped " + objIn[key]); continue; //skip functions
   		case 'undefined': console.log("skipped " + objIn[key]); continue; //skip undefined's
-  		default: stringOut.push('"'+key+'"' + ":" + stringify(objIn[key]) );
+  		default: stringOut.push('"'+key+'"' + ":" + stringify(objIn[key]) ); //pass to stringify for triage
   	} 	
   }
   return "{" + stringOut.toString() + "}";	
