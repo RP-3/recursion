@@ -32,7 +32,7 @@ var getElementsByClassName = function(className) {
 		}
 	}
 
-	traverseChildren(document);
+	traverseChildren(document.body);
 
 	return results;
 };

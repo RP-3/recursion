@@ -29,11 +29,11 @@ var getElementsByClassName = function(className) {
 		var childArray = node.children;
 		//iterate through all children
 		for (var i=0; i<childArray.length; i++){
-			//if children, recurse
+			//if grandchildren present, recurse
 			if(childArray[i].children.length > 0){ 
 				traverseChildren(childArray[i]);
 			}
-			//if match, fetch element
+			//if a match is found, add the element to results
 			fetchElement(childArray[i]); 
 		}
 	}
