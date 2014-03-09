@@ -8,27 +8,31 @@ var getElementsByClassName = function(className) {
 
  	var results = [];	
 
-  	var fetchElement = function(node){
-  		if(node.className === className){
-  			results.push(node.outerHTML);
+ 	//adds to output if finds matching class
+  	var fetchElement = function(node){ 
+  		var classArray = node.className.split(" ");
+  		for(j=0; j<classArray.length; j++){
+  			if(classArray[j] === className){
+  				results.push(node);
+  				break;
+  			}
   		}
   	}
 
   	var traverseChildren = function(node){
-		var childArray = node.childNodes;
+		var childArray = node.children;
 		//iterate through all children
 		for (var i=0; i<childArray.length; i++){
-			//if children, recurse
-			if(childArray[i].childNodes.length > 0){ 
+			//if grandchildren present, recurse
+			if(childArray[i].children.length > 0){ 
 				traverseChildren(childArray[i]);
 			}
-			//if match, fetch element
+			//if a match is found, add the element to results
 			fetchElement(childArray[i]); 
 		}
 	}
 
-	traverseChildren(document.body);
+	traverseChildren(document);
 
 	return results;
-
 };
